@@ -1,0 +1,34 @@
+--TO SHOW UNIQUE CATEGORIES ONLY
+SELECT DISTINCT "Category" FROM Superstore
+
+--SHOWS UNIQUE REGIONS
+SELECT DISTINCT "Region" FROM Superstore
+
+--SHOW CATEGORIES WHERE TOTAL SALES ARE GREATER THAN 500000
+SELECT "Category",sum("Sales") FROM superstore
+GROUP BY "Category"
+HAVING SUM("Sales")>500000
+
+
+--SHOW REGIONS WITH MORE THAN 2000 ORDERS
+SELECT "Region",count(*) FROM superstore
+GROUP BY "Region"
+HAVING COUNT(*)>2000
+
+---CASE WHEN
+SELECT "Customer Name","Profit",
+   CASE
+       WHEN "Profit">10 then 'PROFIT'
+       ELSE 'LOSS'
+   END AS STATUS
+ FROM superstore
+
+---ANOTHER EXAMPLE
+SELECT
+	"Customer Name",
+	"Sales",
+	CASE
+		WHEN "Sales" > 500 THEN 'High'
+		ELSE 'Low'
+	END
+FROM SUPERSTORE
